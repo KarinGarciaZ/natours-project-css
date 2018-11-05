@@ -7,7 +7,9 @@ Dark green: 28b485#
 
 */
 
-* {
+/* Esto es para que todos los elemenros
+tengan las propiedades que se les epecifique */
+* { 
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -23,17 +25,20 @@ body {
 }
 
 .header {
-  height: 95vh;
-  background-image: linear-gradient(
-    to right bottom,
+  height: 95vh;/*Toma el 95% del area visible en la pantalla*/
+
+  background-image: linear-gradient( /*Es para hacer un difuminado de color*/
+    to right bottom, /*Indicamos que va a terminar en la esquina inferior derecha*/
     #7ed56fbf,
     #28b485bf),
-    url(../img/hero.jpg);
-  background-size: cover;
-  background-position: top;
-  position: relative;
+    url(../img/hero.jpg); /*para indicar que imagen queremos de fondo*/
 
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  background-size: cover; /*cover es para que se adapte al tamaño de su contenedor padre, incluso si este es mas grande*/
+  background-position: top;/*Este es para especificar donde queremos que comience la imagen*/
+  position: relative; /*lo hacemos relative para poder poner dentro posiciones absolutas*/
+
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);/*Es para darle una forma a lo que se verá dentro del contenedor, 
+                    para ello especificamos las cooredenadas*/
 }
 
 .logo-box {
@@ -55,7 +60,7 @@ body {
   position: absolute;
   top: 40%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); /*Es para centrar el contenedor del texto en su contenedor padre*/
   text-align: center;
 }
 
@@ -64,24 +69,24 @@ body {
   text-transform: uppercase;   
   margin-bottom: 70px;
 
-  backface-visibility: hidden;
+  backface-visibility: hidden;/*Esto es para evitar que haya problemas de que se muevan elementos al dar click u otros eventos */
 }
 
 .heading-primary-main {
-  display: block;
+  display: block; /*para hacer que se comporte como bloque*/
   font-size: 40px;
   font-weight: 400;
   letter-spacing: 10px;
 
   animation-name: moveInLeft;
   animation-duration: 1.5s;
-  animation-timing-function: ease;
-  animation-delay: .1s;
+  animation-timing-function: ease;/*para determinar a qué ritmo queremos que la animacion se ejecute*/
+  animation-delay: .1s;/*Para determinar lo que queremos que tarde en ejecutarse la animacion*/
   
 
   /*
     animation-delay: 3s;  
-    animation-iteration-count: 3;
+    animation-iteration-count: 3; para ejecutar varias veces una animacion
   */
 }
 
@@ -91,7 +96,7 @@ body {
   font-weight: 700;
   letter-spacing: 3px;
 
-  animation: moveInRight 1.5s ease;
+  animation: moveInRight 1.5s ease; /* Para agregar propiedades de una animacion en una sola línea */
 }
 
 .btn:link,
@@ -99,15 +104,15 @@ body {
   text-transform: uppercase;
   text-decoration: none;  
   padding: 15px 30px;
-  display: inline-block;
-  transition: all .2s;  
+  display: inline-block;/*para que se comporte como bloque, pero solo tenga el tamaño de línea*/
+  transition: all .2s;  /*para que todas las animaciones dentro de la clase tengan una diracion de .2s*/
   border-radius: 50px;
   position: relative;
 }
 
 .btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+  transform: translateY(-3px); /*Para que se mueva para arriba 3px*/
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .2); /*Para aplicar una sombra en el botón*/
 }
 
 .btn:active {
@@ -121,7 +126,7 @@ body {
 }
 
 .btn::after {
-  content: "";
+  content: "";/*Es necesaria esta propiedad en pseudos*/
   height: 100%;
   width: 100%;
   display: inline-block;
@@ -130,7 +135,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: -1;/*Para que se demuestre por detrás*/
 }
 
 .btn-white::after {
@@ -138,25 +143,26 @@ body {
 }
 
 .btn:hover::after {
-  transform: scale(1.5);
-  opacity: 0;
+  transform: scale(1.5); /* Para que crezca en un 50% */
+  opacity: 0; /*para que se haga invisible*/
 }
 
 .btn-animated {
   animation: moveWhiteButton 1s ease .5s;
-  animation-fill-mode: backwards;
+  animation-fill-mode: backwards; /*Para que no se muestre el elemento hasta que se ejecute la animación*/
 }
 
 
-
+/*Así se generan las animaciones y dentro se ponen porcentajes, según lo que queramos animar y su avance*/
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translate(-30%) rotate(200deg);
+    transform: translate(-30%) rotate(200deg);/*rotate es para rotar el elemento tomando como base 0°*/
   }
 
   70% {
-    transform: translate(20%);
+    transform: translate(20%);/*Translate es para mover nuestro elemento (x, y), 
+                              si solo se pone un parametro será tomado como x*/
   }
 
   100% {
