@@ -1,0 +1,221 @@
+$color-lightgreen: #7ed56f;
+$color-mediumgreen: #55c57a;
+$color-darkgreen: #28b485;
+$color-mediumgray: #777;
+
+/* Esto es para que todos los elemenros
+tengan las propiedades que se les epecifique */
+*,
+*::before,
+*::after { 
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;/*Hace que todos hereden esta propiedad del padre, así que todos heredan de body*/
+}
+
+html {
+  font-size: 62.5%;/*Esto para hacer que el font-size sea de 10px pues toma en cuenta los 16px del navegador*/
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: $color-mediumgray;
+  padding: 3rem;
+
+  box-sizing: border-box;
+}
+
+.header {
+  height: 95vh;/*Toma el 95% del area visible en la pantalla*/
+
+  background-image: linear-gradient( /*Es para hacer un difuminado de color*/
+    to right bottom, /*Indicamos que va a terminar en la esquina inferior derecha*/
+    rgba($color-darkgreen, 0.75),
+    rgba($color-mediumgreen, 0.75)),
+    url(../img/hero.jpg); /*para indicar que imagen queremos de fondo*/
+
+  background-size: cover; /*cover es para que se adapte al tamaño de su contenedor padre, incluso si este es mas grande*/
+  background-position: top;/*Este es para especificar donde queremos que comience la imagen*/
+  position: relative; /*lo hacemos relative para poder poner dentro posiciones absolutas*/
+
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);/*Es para darle una forma a lo que se verá dentro del contenedor, 
+                    para ello especificamos las cooredenadas*/
+}
+
+.header__logo-box {
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+
+.header__logo-box:hover {
+  animation: moveLogo 1s ease;
+  cursor: pointer;
+}
+
+.header__logo {
+  height: 3.5rem;
+}
+
+.header__text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%); /*Es para centrar el contenedor del texto en su contenedor padre*/
+  text-align: center;
+}
+
+.heading-primary {
+  color: white;
+  text-transform: uppercase;   
+  margin-bottom: 7rem;
+
+  backface-visibility: hidden;/*Esto es para evitar que haya problemas de que se muevan elementos al dar click u otros eventos */
+}
+
+.heading-primary--main {
+  display: block; /*para hacer que se comporte como bloque*/
+  font-size: 4rem;
+  font-weight: 400;
+  letter-spacing: 1rem;
+
+  animation-name: moveInLeft;
+  animation-duration: 1.5s;
+  animation-timing-function: ease;/*para determinar a qué ritmo queremos que la animacion se ejecute*/
+  animation-delay: .1s;/*Para determinar lo que queremos que tarde en ejecutarse la animacion*/
+  
+
+  /*
+    animation-delay: 3s;  
+    animation-iteration-count: 3; para ejecutar varias veces una animacion
+  */
+}
+
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: .3rem;
+
+  animation: moveInRight 1.5s ease; /* Para agregar propiedades de una animacion en una sola línea */
+}
+
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;  
+  padding: 1.5rem 3rem;
+  display: inline-block;/*para que se comporte como bloque, pero solo tenga el tamaño de línea*/
+  transition: all .2s;  /*para que todas las animaciones dentro de la clase tengan una diracion de .2s*/
+  border-radius: 5rem;
+  position: relative;
+}
+
+.btn:hover {
+  transform: translateY(-.3rem); /*Para que se mueva para arriba 3px*/
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2); /*Para aplicar una sombra en el botón*/
+}
+
+.btn:active {
+  transform: translateY(-.1rem);
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+}
+
+.btn--white {
+  color: $color-mediumgray;
+  background-color: white;
+}
+
+.btn::after {
+  content: "";/*Es necesaria esta propiedad en pseudos*/
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+  transition: all .35s;  
+  border-radius: 5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;/*Para que se demuestre por detrás*/
+}
+
+.btn--white::after {
+  background-color: white;
+}
+
+.btn:hover::after {
+  transform: scale(1.5); /* Para que crezca en un 50% */
+  opacity: 0; /*para que se haga invisible*/
+}
+
+.btn--animated {
+  animation: moveWhiteButton 1s ease .5s;
+  animation-fill-mode: backwards; /*Para que no se muestre el elemento hasta que se ejecute la animación*/
+}
+
+
+/*Así se generan las animaciones y dentro se ponen porcentajes, según lo que queramos animar y su avance*/
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translate(-80%, -50%) rotate(200deg);/*rotate es para rotar el elemento tomando como base 0°*/
+  }
+
+  70% {
+    transform: translate(20%);/*Translate es para mover nuestro elemento (x, y), 
+                              si solo se pone un parametro será tomado como x*/
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0) rotate(360deg);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translate(30%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+
+@keyframes moveLogo {
+  0% {
+    opacity: .5;
+    transform: translate(0);
+  }
+
+  25% {
+    transform: translate(20%);
+  }
+
+  75% {
+    transform: translate(-20%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveWhiteButton {
+  0% {
+    opacity: 0;
+    transform: translateY(80%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
