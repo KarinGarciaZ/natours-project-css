@@ -15,13 +15,17 @@ tengan las propiedades que se les epecifique */
   box-sizing: border-box;
 }
 
+html {
+  font-size: 62.5%;/*Esto para hacer que el font-size sea de 10px pues toma en cuenta los 16px del navegador*/
+}
+
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1.6rem;
   line-height: 1.7;
   color: #777;
-  padding: 30px;
+  padding: 3rem;
 }
 
 .header {
@@ -43,8 +47,8 @@ body {
 
 .logo-box {
   position: absolute;
-  top: 40px;
-  left: 40px;
+  top: 4rem;
+  left: 4rem;
 }
 
 .logo-box:hover {
@@ -53,7 +57,7 @@ body {
 }
 
 .logo {
-  height: 35px;
+  height: 3.5rem;
 }
 
 .text-box {
@@ -67,16 +71,16 @@ body {
 .heading-primary {
   color: white;
   text-transform: uppercase;   
-  margin-bottom: 70px;
+  margin-bottom: 7rem;
 
   backface-visibility: hidden;/*Esto es para evitar que haya problemas de que se muevan elementos al dar click u otros eventos */
 }
 
 .heading-primary-main {
   display: block; /*para hacer que se comporte como bloque*/
-  font-size: 40px;
+  font-size: 4rem;
   font-weight: 400;
-  letter-spacing: 10px;
+  letter-spacing: 1rem;
 
   animation-name: moveInLeft;
   animation-duration: 1.5s;
@@ -92,9 +96,9 @@ body {
 
 .heading-primary-sub {
   display: block;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
-  letter-spacing: 3px;
+  letter-spacing: .3rem;
 
   animation: moveInRight 1.5s ease; /* Para agregar propiedades de una animacion en una sola línea */
 }
@@ -103,21 +107,21 @@ body {
 .btn:visited {
   text-transform: uppercase;
   text-decoration: none;  
-  padding: 15px 30px;
+  padding: 1.5rem 3rem;
   display: inline-block;/*para que se comporte como bloque, pero solo tenga el tamaño de línea*/
   transition: all .2s;  /*para que todas las animaciones dentro de la clase tengan una diracion de .2s*/
-  border-radius: 50px;
+  border-radius: 5rem;
   position: relative;
 }
 
 .btn:hover {
-  transform: translateY(-3px); /*Para que se mueva para arriba 3px*/
-  box-shadow: 0 10px 20px rgba(0, 0, 0, .2); /*Para aplicar una sombra en el botón*/
+  transform: translateY(-.3rem); /*Para que se mueva para arriba 3px*/
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2); /*Para aplicar una sombra en el botón*/
 }
 
 .btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+  transform: translateY(-.1rem);
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
 }
 
 .btn-white {
@@ -131,7 +135,7 @@ body {
   width: 100%;
   display: inline-block;
   transition: all .35s;  
-  border-radius: 50px;
+  border-radius: 5rem;
   position: absolute;
   top: 0;
   left: 0;
@@ -157,7 +161,7 @@ body {
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translate(-30%) rotate(200deg);/*rotate es para rotar el elemento tomando como base 0°*/
+    transform: translate(-80%, -50%) rotate(200deg);/*rotate es para rotar el elemento tomando como base 0°*/
   }
 
   70% {
