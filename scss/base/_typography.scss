@@ -59,5 +59,15 @@ body {
   &:hover {
     transform: skewY(2deg) skewX(10deg) scale(1.1);
     text-shadow: .5rem 1rem 2rem $color-black-transparent;
-  }
+  }  
+}
+
+.heading-tertiary {
+  text-transform: uppercase;   
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+.paragraph {
+  font-size: 1.6rem;
 }
