@@ -1,6 +1,5 @@
 .row {
   max-width: $grid-width;//Hace que se adapte a la pantalla si es mas pequeña
-  background-color: #ccc;
   margin: 0 auto;//Hace que el margin de los lados sea adaptable
 
   //Esto hace que todos los hijos tengan la probiedad margin-bottom menos el último
@@ -12,7 +11,6 @@
 
   //Esto hace que todas las clases que comiencen con 'col-' se les aplique esas propiedades
   [class^="col-"] {
-    background-color: red;
     float: left;
     
     &:not(:last-child) {    
