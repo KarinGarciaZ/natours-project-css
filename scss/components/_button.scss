@@ -45,6 +45,15 @@
       background-color: white;
     }
   }
+
+  &--green {
+    background-color: $color-mediumgreen;
+    color: $color-lightgray-1;
+
+    &::after {
+      background-color: $color-mediumgreen;
+    }
+  }
   
   &--animated {
     animation: moveWhiteButton 1s ease .5s;
